@@ -1,0 +1,20 @@
+server:
+  port: 8888
+
+spring:
+  datasource:
+    username: root
+    password: guo6622585
+    url: jdbc:mysql://127.0.0.1:3306/test?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=CTT
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+    properties:
+      hibernate:
+        format_sql: true
+  mvc:
+    favicon:
+      enabled: false

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+<script>
+    axios.get('http://localhost:8888/user').then(res => {
+        let list = res.data;
+        for (const user of list) {
+            for (const prop in user) {
+                document.writeln(prop + ': ' + user[prop] + '<br/>');
+            }
+            document.write('<br/>');
+        }
+    });
+</script>
+
+<script>
+    let webSocket = new WebSocket('ws://localhost:8888/server/user/1');
+
+    webSocket.onopen = () => {
+        console.log('连接成功');
+        webSocket.send('send message from front-end');
+    };
+
+    webSocket.onmessage = mes => {
+        console.log(mes.data);
+    };
+</script>
+
+</html>
